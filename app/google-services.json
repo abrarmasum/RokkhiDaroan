@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "452395395421",
+    "firebase_url": "https://rokkhidaroan.firebaseio.com",
+    "project_id": "rokkhidaroan",
+    "storage_bucket": "rokkhidaroan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452395395421:android:c564ab55a6cc1438",
+        "android_client_info": {
+          "package_name": "rokkhi.abrar.rokkhidaroan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452395395421-jj3mbf9cra6j9kife9qvmp66rd4f3l6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rokkhi.abrar.rokkhidaroan",
+            "certificate_hash": "ad1033c6de107152380124fc2c57389b013edbb7"
+          }
+        },
+        {
+          "client_id": "452395395421-dsshb6h7a335at6hrkjhah80g2t9a2bc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rokkhi.abrar.rokkhidaroan",
+            "certificate_hash": "af4b3babd79a7e86f3d2046090cfd0f438abbc44"
+          }
+        },
+        {
+          "client_id": "452395395421-4ej0v5smo57btssvgsmt5r27uepjq86q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8IWlxh_j9WeMbE4uQJFLf94wEgQy6eZA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452395395421-4ej0v5smo57btssvgsmt5r27uepjq86q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

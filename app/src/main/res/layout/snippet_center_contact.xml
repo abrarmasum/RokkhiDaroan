@@ -1,0 +1,450 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nestededit">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="20dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/security_company"
+                android:text="none"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/security_company"
+                android:orientation="vertical"
+                android:background="@drawable/grey_border_bottom"
+                android:id="@+id/phn1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Owner's contact no. 1:(mandatory)"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone1"
+                    android:background="@null"
+                    android:hint="phone no"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name1"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="name"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phn1"
+                android:orientation="vertical"
+                android:background="@drawable/grey_border_bottom"
+                android:id="@+id/phn2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Owner's contact no. 2:(optional)"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone2"
+                    android:background="@null"
+                    android:hint="phone no"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name2"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="name"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phn2"
+                android:orientation="vertical"
+                android:background="@drawable/grey_border_bottom"
+                android:id="@+id/phn3"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Owner's contact no. 3:(optional)"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone3"
+                    android:background="@null"
+                    android:hint="phone no"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name3"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="name"/>
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/daroanno"
+                android:layout_below="@+id/phn3"
+                android:layout_marginBottom="50dp"
+                android:visibility="visible"
+                >
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn1"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 1:(mandatory)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone1"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname1"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn1"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn2"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 2:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone2"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname2"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn2"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn3"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 3:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone3"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname3"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn3"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn4"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 4:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone4"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname4"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn4"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn5"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 5:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone5"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname5"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn5"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn6"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 6:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone6"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname6"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn6"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn7"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 7:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone7"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname7"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dphn7"
+                    android:orientation="vertical"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/dphn8"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Daroan's contact no. 8:(optional)"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dphone8"
+                        android:background="@null"
+                        android:hint="phone no"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dname8"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="name"/>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:id="@+id/submit"
+                android:text="submit"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+
+                android:textColor="@color/white"
+                android:background="@color/darkRed"
+                android:layout_alignParentBottom="true"
+                />
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</merge>
