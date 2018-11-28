@@ -48,6 +48,7 @@ public class house_contact implements Parcelable {
     }
 
 
+
     protected house_contact(Parcel in) {
         phid = in.readString();
         serial_no = in.readString();

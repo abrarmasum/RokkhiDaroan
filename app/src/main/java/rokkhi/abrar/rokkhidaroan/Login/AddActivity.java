@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,8 +45,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ForkJoinPool;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import rokkhi.abrar.rokkhidaroan.Model.SecRokkhi;
+import rokkhi.abrar.rokkhidaroan.Model.Sec_house_contact;
 import rokkhi.abrar.rokkhidaroan.Model.Visitors;
 import rokkhi.abrar.rokkhidaroan.Model.house_contact;
 import rokkhi.abrar.rokkhidaroan.R;
@@ -62,6 +67,7 @@ public class AddActivity extends AppCompatActivity {
     TextView upload;
     EditText visitor_name,visitor_mobile_no,flat_no;
     Button add;
+    Map<String, Object> visitors = new HashMap<>();
 
     @ServerTimestamp
             Date itime,otime;
@@ -81,6 +87,13 @@ public class AddActivity extends AppCompatActivity {
     String name="";
     String mobile="";
     String flat="";
+    String daroanno="";
+    private long mLastClickTime = 0;
+
+    Sec_house_contact sec_house_contact=new Sec_house_contact();
+    String pass=null;
+    SecRokkhi secRokkhi=new SecRokkhi();
+
 
 
     @Override
@@ -107,10 +120,20 @@ public class AddActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         house_contact=intent.getParcelableExtra("contact");
+        daroanno=intent.getStringExtra("daroanno");
+        secRokkhi=intent.getParcelableExtra("rokkhi");
+        pass=intent.getStringExtra("pass");
+        sec_house_contact=intent.getParcelableExtra("sec_contact");
 
-        flattype=house_contact.getFlattype();
-        flat_number=house_contact.getFloor_per_flat();
-        floor_number=house_contact.getFloor_number();
+        if(pass!=null){
+            flattype=sec_house_contact.getFlattype();
+            flat_number=sec_house_contact.getFloor_per_flat();
+            floor_number=sec_house_contact.getFloor_number();
+        }else{
+            flattype=house_contact.getFlattype();
+            flat_number=house_contact.getFloor_per_flat();
+            floor_number=house_contact.getFloor_number();
+        }
 
 
 
@@ -188,6 +211,11 @@ public class AddActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 name=visitor_name.getText().toString();
                 if(name.equals("")){
                     return;
@@ -197,46 +225,91 @@ public class AddActivity extends AppCompatActivity {
                 //Date now=FieldValue.serverTimestamp();
 
                 mobile=visitor_mobile_no.getText().toString();
-                Map<String, Object> visitors = new HashMap<>();
+
+                String phid;
+                if(pass!=null)phid=sec_house_contact.getPhid();
+                else phid=house_contact.getPhid();
+
                 visitors.put("phone", mobile);
                 visitors.put("name", name);
                 visitors.put("pro_pic", propic);
-                visitors.put("phid",house_contact.getPhid());
+                visitors.put("phid",phid);
                 visitors.put("flat_no",flat);
                 visitors.put("itime",FieldValue.serverTimestamp());
                 visitors.put("otime",FieldValue.serverTimestamp());
+                visitors.put("sort",FieldValue.serverTimestamp());
 
 
 
 
                // Visitors visitors=new Visitors(mobile,name,propic,house_contact.getPhid(),flat,FieldValue.serverTimestamp(),FieldValue.serverTimestamp());
                 if(mobile.equals("")){
-                    firebaseFirestore.collection("phid").document(house_contact.getPhid()).collection("visitors")
-                            .add(visitors).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(context,"Visitor is added",Toast.LENGTH_SHORT).show();
-                            Intent intent1=new Intent();
-                            intent1.putExtra("contact",house_contact);
-                            startActivity(intent1);
-                        }
-                    })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                   // Toast.makeText(context,"Connection Error!",Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-                else{
-                    firebaseFirestore.collection("phid").document(house_contact.getPhid()).collection("visitors")
-                            .document(mobile).set(visitors).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    CollectionReference coll=firebaseFirestore.collection("phid").document(phid).collection("visitors");
+                    final CollectionReference coll1=firebaseFirestore.collection("phid").document(phid).collection("rvis");
+
+                    final String id=coll.document().getId();
+                    Log.d(TAG, "onClick: dekhi1  "+ id);
+                    visitors.put("phone",id);
+                    coll.document(id).set(visitors).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            //add.setVisibility(View.GONE);
+                            coll1.document(id).set(visitors).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //add.setVisibility(View.GONE);
+                                    Intent intent1=new Intent(AddActivity.this,InsideApp.class);
+                                    intent1.putExtra("contact",house_contact);
+                                    intent1.putExtra("daroanno",daroanno);
+                                    intent1.putExtra("sec_contact",sec_house_contact);
+                                    intent1.putExtra("rokkhi",secRokkhi);
+                                    intent1.putExtra("pass",pass);
+                                    startActivity(intent1);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                }
+                else{
+                    final CollectionReference coll1=firebaseFirestore.collection("phid").document(phid).collection("rvis");
+
+                    CollectionReference coll=firebaseFirestore.collection("phid").document(phid).collection("visitors");
+                    coll.document(mobile).set(visitors).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            //add.setVisibility(View.GONE);
                             Toast.makeText(context,"Visitor is added",Toast.LENGTH_SHORT).show();
-                            Intent intent1=new Intent();
-                            intent1.putExtra("contact",house_contact);
-                            startActivity(intent1);
+                            coll1.document(mobile).set(visitors).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //add.setVisibility(View.GONE);
+                                    Toast.makeText(context,"Visitor is added",Toast.LENGTH_SHORT).show();
+                                    Intent intent1=new Intent(AddActivity.this,InsideApp.class);
+                                    intent1.putExtra("contact",house_contact);
+                                    intent1.putExtra("daroanno",daroanno);
+                                    intent1.putExtra("sec_contact",sec_house_contact);
+                                    intent1.putExtra("rokkhi",secRokkhi);
+                                    intent1.putExtra("pass",pass);
+                                    startActivity(intent1);
+                                }
+                            })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // Toast.makeText(context,"Connection Error!",Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {

@@ -64,6 +64,7 @@ public class NonSecLogin extends AppCompatActivity {
                                             if(password.equals(pass.getText().toString())){
                                                 Intent intent1=new Intent(NonSecLogin.this,InsideApp.class);
                                                 intent1.putExtra("contact",house_contact);
+                                                intent1.putExtra("daroanno","nodaroan");
                                                 intent1.putExtra("koitheke",TAG);
                                                 startActivity(intent1);
                                             }

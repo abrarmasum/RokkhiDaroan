@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/white_grey_border_bottom"
             android:id="@+id/lin1"
             android:weightSum="5"
@@ -30,7 +30,10 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:id="@+id/pro_pic_daroan"
+                android:src="@drawable/ic_launcher_background"
                 android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 />
 
             <TextView
@@ -62,6 +65,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/recyclerview"
             android:layout_below="@+id/recent"
+            android:layout_marginBottom="200dp"
             >
 
 

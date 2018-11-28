@@ -33,6 +33,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import rokkhi.abrar.rokkhidaroan.Model.Initialhouse;
+import rokkhi.abrar.rokkhidaroan.Model.Sec_house_contact;
 import rokkhi.abrar.rokkhidaroan.Model.house_contact;
 import rokkhi.abrar.rokkhidaroan.R;
 import rokkhi.abrar.rokkhidaroan.utils.HorizontalRecyclerAdapterfortopic;
@@ -64,6 +65,7 @@ public class Flattype extends Fragment {
     RecyclerView recyclerView;
     private ArrayList<String> mList;
     house_contact house_contact;
+    Sec_house_contact sec_house_contact;
 
 
     //for security list
@@ -163,10 +165,15 @@ public class Flattype extends Fragment {
                 house_contact=new house_contact(houseid.getText().toString(),mParam2,security.getText().toString(),flattext.getText().toString(),
                         Integer.parseInt(floor.getText().toString()),Integer.parseInt(flat.getText().toString()),"","","","","","","","","","","");
 
+                sec_house_contact=new Sec_house_contact(houseid.getText().toString(),mParam2,security.getText().toString(),flattext.getText().toString(),
+                        Integer.parseInt(floor.getText().toString()),Integer.parseInt(flat.getText().toString()),"","","");
+
+
 
                 ContactPage contactPage = new ContactPage();
                 Bundle arguments = new Bundle();
                 arguments.putParcelable("contact",house_contact);
+                arguments.putParcelable("sec_contact",sec_house_contact);
                 //arguments.putString( "serial" , serial_no);
                 contactPage.setArguments(arguments);
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();

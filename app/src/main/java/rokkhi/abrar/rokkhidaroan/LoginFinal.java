@@ -31,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import rokkhi.abrar.rokkhidaroan.Login.NonSecLogin;
 import rokkhi.abrar.rokkhidaroan.Login.SecLogin;
+import rokkhi.abrar.rokkhidaroan.Model.Sec_house_contact;
 import rokkhi.abrar.rokkhidaroan.Model.house_contact;
 
 public class LoginFinal extends AppCompatActivity {
@@ -44,6 +45,7 @@ public class LoginFinal extends AppCompatActivity {
     Context context;
     FirebaseFirestore firebaseFirestore;
     house_contact house_contact=new house_contact();
+    Sec_house_contact sec_house_contact=new Sec_house_contact();
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
@@ -90,10 +92,14 @@ public class LoginFinal extends AppCompatActivity {
                             DocumentSnapshot documentSnapshot=task.getResult();
                             if(documentSnapshot.exists()){
                                 house_contact=documentSnapshot.toObject(house_contact.class);
-                                String secom=house_contact.getSecurity();
+                                sec_house_contact=documentSnapshot.toObject(Sec_house_contact.class);
+                                String secom;
+                                if(sec_house_contact!=null)secom=sec_house_contact.getSecurity();
+                                else secom=house_contact.getSecurity();
+
                                 if(!secom.equals("none")){
                                     Intent intent=new Intent(context,SecLogin.class);
-                                    intent.putExtra("contact",house_contact);
+                                    intent.putExtra("sec_contact",sec_house_contact);
                                     startActivity(intent);
                                 }
                                 else {

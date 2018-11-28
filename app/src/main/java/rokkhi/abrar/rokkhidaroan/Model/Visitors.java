@@ -16,12 +16,9 @@ public class Visitors implements Serializable {
     String flat_no;
     Timestamp itime;
     Timestamp otime;
+    Timestamp sort;
 
-
-    public Visitors() {
-    }
-
-    public Visitors(String phone, String name, String pro_pic, String phid, String flat_no, Timestamp itime, Timestamp otime) {
+    public Visitors(String phone, String name, String pro_pic, String phid, String flat_no, Timestamp itime, Timestamp otime, Timestamp sort) {
         this.phone = phone;
         this.name = name;
         this.pro_pic = pro_pic;
@@ -29,7 +26,12 @@ public class Visitors implements Serializable {
         this.flat_no = flat_no;
         this.itime = itime;
         this.otime = otime;
+        this.sort = sort;
     }
+
+    public Visitors() {
+    }
+
 
     public String getPhone() {
         return phone;
@@ -85,5 +87,13 @@ public class Visitors implements Serializable {
 
     public void setOtime(Timestamp otime) {
         this.otime = otime;
+    }
+
+    public Timestamp getSort() {
+        return sort;
+    }
+
+    public void setSort(Timestamp sort) {
+        this.sort = sort;
     }
 }
